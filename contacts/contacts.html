@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/contacts.css" />
+    <title>Итоговая работа</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link rel="stylesheet" href="http:cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar__wrap">
+          <div class="hamb">
+            <div class="hamb__field" id="hamb">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </div>
+          </div>
+          <a href="#" class="logo" id="logo">Стручина <br>Кира</a>
+          <ul class="menu" id="menu">
+            <li><a href="../index.html">Главная</a></li>
+            <li><a href="../slider/slaider.html">Слайдер</a></li>
+            <li><a href="../calc/calc.html">Калькулятор</a></li>
+            <li><a href="../form/form.html">Форма обратной связи</a></li>
+            <li><a href="../contacts/contacts.html">Контакты</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+
+    <div class="popup" id="popup"></div>
+
+
+
+    <header class="header">
+      <div class="container">
+        <div class="content">
+          <h1>Контакты</h1>
+        </div>
+      </div>
+    </header>
+    
+
+
+    <main class="main">
+      <div class="container">
+        <div class="content">
+
+          <div class="contact-page">
+            <div class="contact_title" style="color: white;">Для связи со мной </div>
+            <!-- <h2>Свяжитесь со мной:</h2> -->
+            
+            <div class="contact-info">
+              <div class="item">
+                <i class="icon fas fa-home"></i>
+                Йошкар-Ола. РMЭ. Россия.
+              </div>
+              <div class="item">
+                <i class="icon fas fa-phone"></i>
+                +7 927 8798729
+  
+              </div>
+              <div class="item">
+                <i class="icon fas fa-phone"></i>
+  
+                +7 919 4177943
+              </div>
+              <div class="item">
+                <i class="icon fas fa-envelope"></i>
+                kira_shuk@bk.ru
+              </div>
+              <div class="item">
+                <i class="icon fas fa-clock"></i>
+                пн-птн с 8:00 до 18:00
+              </div>
+            </div>
+            <form action="" class="contact-form">
+              <input type="text" class="text-tb" placeholder="Ваше имя">
+              <input type="email" class="text-tb" placeholder="Ваш email">
+              <textarea class="color" placeholder="Ваше сообщение"></textarea>
+  
+  
+              <input type="submit" class="btn" value="Отправить">
+            </form>
+            </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+          
+         
+        </div>
+      </div>
+
+    </main>
+
+
+
+
+
+
+
+    <footer class="footer">
+      <div class="container">
+        <div class="content">
+          &copy; 2023 Struchina
+      </div>
+    </div>
+    </footer>
+
+
+
+    <script >
+      var hamb = document.querySelector('#hamb');
+var popup = document.querySelector('#popup');
+var menu = document.querySelector('#menu').cloneNode(1);
+var body = document.body;
+
+hamb.addEventListener('click',hambHandler);
+
+function hambHandler(e) {
+    e.preventDefault();
+    popup.classList.toggle('open');
+    hamb.classList.toggle('active');
+    body.classList.toggle('noscroll');
+    renderPopup();
+}
+
+function renderPopup() {
+    popup.appendChild(menu);
+}
+
+var links  = Array.from(menu.children);
+
+links.forEach((link) => {
+    link.addEventListener('click', closeOnClick);
+})
+
+function closeOnClick(){
+    popup.classList.remove('open');
+    hamb.classList.remove('active');
+    body.classList.remove('noscroll');
+}
+
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/slider.css" />
+    <title>Итоговая работа</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   
+
+
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar__wrap">
+          <div class="hamb">
+            <div class="hamb__field" id="hamb">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </div>
+          </div>
+          <a href="#" class="logo" id="logo">Стручина <br>Кира</a>
+          <ul class="menu" id="menu">
+            <li><a href="../index.html">Главная</a></li>
+            <li><a href="../slider/slaider.html">Слайдер</a></li>
+            <li><a href="../calc/calc.html">Калькулятор</a></li>
+            <li><a href="../form/form.html">Форма обратной связи</a></li>
+            <li><a href="../contacts/contacts.html">Контакты</a></li>
+            
+           
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+
+    <div class="popup" id="popup"></div>
+
+
+
+    <header class="header">
+      <div class="container">
+        <div class="content">
+          <h1>Слайдер</h1>
+        </div>
+      </div>
+    </header>
+    
+
+
+    <main class="main">
+      <div class="container">
+        <div class="content">
+          <div class="form_title" style="color: white;">Флоридская пума </div>
+          <p style="color: white;">Флоридская пума, фото которой перед вами - это красивая большая кошка, называют ее еще горным львом, рыжим
+            тигром, пантерой или кугуаром. Эти прекрасные животные занимают почетное место в племенной мифологии, они
+            скрытны и очень умны. "Пума" в переводе обозначает "сильный и могущественный".
+  
+            Эта разновидность пантер всегда была малочисленной. Обитает она в южных регионах Флориды, рядом с Большим
+            национальным заповедником. На 1970 год их популяция находилась на грани исчезновения. В неволе проживало всего
+            20 особей. Причиной тому стали мероприятия по осушению болот и охота (в том числе и спортивная).
+          </p>
+
+          <div class="slider__wrap">
+        
+        <div id="slider__viewport" class="slider__viewport">
+            <div class="slider" >
+                <div class="slide"><img src="../img/puma3.jpg" alt="1" title="1"></div>
+                <div class="slide"><img src="../img/puma10.jpg" alt="2" title="2"></div>
+                <div class="slide"><img src="../img/puma11.jpg" alt="3" title="3"></div>
+                <div class="slide"><img src="../img/puma1.jpg" alt="4" title="4"></div>
+                <div class="slide"><img src="../img/puma4.jpg" alt="5" title="5"></div>
+            </div>
+        </div>
+
+        <div class="slider__pagination">
+            <div id="viewSlider">
+                <div class="viewSlide"></div>
+                <div class="viewSlide"></div>
+                <div class="viewSlide"></div>
+                <div class="viewSlide"></div>
+                <div class="viewSlide"></div>
+            </div>
+        </div>
+
+
+        <div class="slider__control">
+            <button class="slider__control-button slider__control-prev" id="slider__control-prev" style="color: bisque">Назад</button>
+            <button class="slider__control-button slider__control-next" id="slider__control-next" style="color: bisque"> Вперёд</button>
+        </div>
+
+    </div>
+    <p style="color: white;">
+      Кроме этого, они крайне зависимы от распространенности травоядных животных. Чтобы себя прокормить, 1 пума
+      должна съедать 2 крупных животных в неделю. Норма вырастает в 1,5 раза, если есть котята.
+    </p>
+    <img src="../img/puma2.jpg" alt="Office">
+    <p style="color: white;">Сейчас они также внесены в красную книгу, хоть их численность удалось взять под контроль. В начале прошлого
+      десятилетия удалось увеличить их количество до 160.
+
+      Их не держат в зоопарках, а убийство и вылов карается тюремным сроком.
+    </p>
+
+
+
+          
+         
+        </div>
+      </div>
+
+    </main>
+
+
+
+
+
+
+
+    <footer class="footer">
+      <div class="container">
+        <div class="content">
+          &copy; 2023 Struchina
+      </div>
+    </div>
+
+    </footer>
+
+
+
+    <script >
+      var hamb = document.querySelector('#hamb');
+var popup = document.querySelector('#popup');
+var menu = document.querySelector('#menu').cloneNode(1);
+var body = document.body;
+
+hamb.addEventListener('click',hambHandler);
+
+function hambHandler(e) {
+    e.preventDefault();
+    popup.classList.toggle('open');
+    hamb.classList.toggle('active');
+    body.classList.toggle('noscroll');
+    renderPopup();
+}
+
+function renderPopup() {
+    popup.appendChild(menu);
+}
+
+var links  = Array.from(menu.children);
+
+links.forEach((link) => {
+    link.addEventListener('click', closeOnClick);
+})
+
+function closeOnClick(){
+    popup.classList.remove('open');
+    hamb.classList.remove('active');
+    body.classList.remove('noscroll');
+}
+
+
+
+    // Получаем видимую часть слайда
+    let viewport = document.getElementById("slider__viewport").offsetWidth;
+    // Получаем кнопку вперёд
+    let btnNext = document.getElementById("slider__control-next");
+    // Получаем кнопку назад
+    let btnPrev = document.getElementById("slider__control-prev");
+    // Получаем элемент со всеми слайдами
+    let slider = document.querySelector("div.slider");
+    // Получаем элементы показа слайда
+    let viewSliders = document.querySelectorAll(".viewSlide");
+    // Объявляем переменную номера слайда
+    let viewSlide = 0;
+     
+    // Назначаем цвет индикатор слайда желтый
+    viewSliders[0].style.backgroundColor = "grey";
+    // viewSliders[0].classList.add("active");
+
+    // Обработка клика на кнопку вперёд
+    btnNext.addEventListener("click", function () {
+        // Делаем индикатор слайда зеленый
+        // viewSliders[viewSlide].classList.remove("active");
+        viewSliders[viewSlide].style.backgroundColor = "white";
+        // Условие, если номер слайда меньше четырёх
+        if (viewSlide < 4) { // Если верно то
+            // Увеличиваем номер слайда на один
+            viewSlide++;
+        } else { // Иначе
+            // Номер слайда равен нулю
+            viewSlide = 0;
+        }
+        // Закрашиваем индикатор слайда в зелёный
+        viewSliders[viewSlide].style.backgroundColor = "grey";
+        // viewSliders[viewSlide].classList.remove("active");
+        // Меняем позицию всего слайда
+        slider.style.left = -viewSlide * viewport + "px";
+    });
+     
+    // Обработка клика на кнопку назад
+    btnPrev.addEventListener("click", function () {
+        // Делаем индикатор слайда красный
+        viewSliders[viewSlide].style.backgroundColor = "white";
+        // Условие, если номер слайда больше нуля
+        if (viewSlide > 0) { // Если верно то
+            // Уменьшаем номер слайда
+            viewSlide--; 
+        } else { // Иначе
+            // Номер слайда равен четырём
+            viewSlide = 4; 
+        }
+        // Закрашиваем индикатор слайда в зелёный
+        viewSliders[viewSlide].style.backgroundColor = "grey";
+        // viewSliders[viewSlide].classList.remove("active");
+        // Меняем позицию всего слайда
+        slider.style.left = -viewSlide * viewport + "px";
+    });
+
+
+
+
+
+
+
+
+    </script>
+  </body>
+</html>

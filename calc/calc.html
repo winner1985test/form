@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/calc.css" />
+    <title>Итоговая работа</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+
+
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        
+        
+        <div class="navbar__wrap">
+          <div class="hamb">
+            <div class="hamb__field" id="hamb">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </div>
+          </div>
+          <a href="#" class="logo" id="logo">Стручина <br>Кира</a>
+          <ul class="menu" id="menu">
+
+
+            <li><a href="../index.html">Главная</a></li>
+            <li><a href="../slider/slaider.html">Слайдер</a></li>
+            <li><a href="../calc/calc.html">Калькулятор</a></li>
+            <li><a href="../form/form.html">Форма обратной связи</a></li>
+            <li><a href="../contacts/contacts.html">Контакты</a></li>
+            
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+
+    <div class="popup" id="popup"></div>
+
+
+
+    <header class="header">
+      <div class="container">
+        <div class="content">
+         
+          <h1>Калькулятор</h1>
+        </div>
+      </div>
+    </header>
+    
+
+
+    <main class="main">
+      <div class="container">
+        <div class="content">
+          <div class="form_title" style="color: white;">Выберите данные  </div>
+          
+
+        
+        <style>
+          .calc {}
+          .calc__fieldset {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+          }
+          .calc__label {
+            font-size: 20px;
+            margin-bottom: 5px;
+            display: block;
+            margin-right: 20px;
+          }
+          .calc__inp {
+            font-size: 20px;
+          }
+          .calc__total {
+            font-size: 30px;
+          }
+          .calc__text {
+            font-size: 20px;
+          }
+        </style>
+        
+
+        <div class="calc">
+          <div class="calc__fieldset">
+            <label for="" class="calc__label"> Площадь дома</label>
+            <input type="number" class="calc__inp" id="square" value="0" min="0" max="1000000000000" onchange='calculateCost();'>
+          </div>
+          <div class="calc__fieldset">
+            <label for="" class="calc__label">Кол-во этажей</label>
+            <input type="number" class="calc__inp" id="floor" value="0" min="0" max="1000000000000" onchange='calculateCost();'>
+          </div>
+          <div class="calc__fieldset">
+            <label for="" class="calc__label">Материал изготовления</label>
+            <select name="" class="calc__inp" id="materialType" onchange='calculateCost();'>
+              <option value="0">---</option>
+              <option value="1">Пластмасс (1000)</option>
+              <option value="2">Дерево (2000)</option>
+              <option value="3">Металл (3000)</option>
+              <option value="4">Бетон (4000)</option>
+            </select>
+          </div>
+
+          <div class="calc__fieldset">
+            <div class="calc__total">Итого: <span id="totalCost" style="font-weight: bold;">Х</span> руб</div>
+          </div>
+
+         
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+
+
+
+          
+     
+    </main>
+
+
+
+
+
+
+
+    <footer class="footer">
+      <div class="container">
+        <div class="content">
+          &copy; 2023 Struchina
+      </div>
+    </div>
+    </footer>
+
+
+
+    <script >
+      var hamb = document.querySelector('#hamb');
+var popup = document.querySelector('#popup');
+var menu = document.querySelector('#menu').cloneNode(1);
+var body = document.body;
+
+hamb.addEventListener('click',hambHandler);
+
+function hambHandler(e) {
+    e.preventDefault();
+    popup.classList.toggle('open');
+    hamb.classList.toggle('active');
+    body.classList.toggle('noscroll');
+    renderPopup();
+}
+
+function renderPopup() {
+    popup.appendChild(menu);
+}
+
+var links  = Array.from(menu.children);
+
+links.forEach((link) => {
+    link.addEventListener('click', closeOnClick);
+})
+
+function closeOnClick(){
+    popup.classList.remove('open');
+    hamb.classList.remove('active');
+    body.classList.remove('noscroll');
+}
+
+
+
+
+let square = document.getElementById('square');
+let floor = document.getElementById('floor');
+let materialType = document.getElementById('materialType');
+
+let cost = 0;
+
+function calculateCost(){
+    console.log('calc cost')
+    switch(Number(document.getElementById('materialType').value)) {
+        case 0: cost = 0; break;
+        case 1: cost = 1000; break;
+        case 2: cost = 2000; break;
+        case 3: cost = 3000; break;
+        case 4: cost = 4000; break;
+    }
+    console.log('cost => ' + cost )
+
+    function makeMoney(n) {
+        return parseFloat(n).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1 ");
+    }
+
+    totalCost = cost*(Number(document.getElementById('square').value))*(Number(document.getElementById('floor').value))
+    console.log('totalCost => ' + totalCost )
+
+    document.getElementById('totalCost').innerHTML = makeMoney(totalCost);;
+
+}
+
+
+    </script>
+  </body>
+</html>

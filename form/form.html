@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/form.css" />
+    <title>Итоговая работа</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+
+ 
+
+
+
+
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar__wrap">
+          <div class="hamb">
+            <div class="hamb__field" id="hamb">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </div>
+          </div>
+          <a href="#" class="logo" id="logo">Стручина <br>Кира</a>
+          <ul class="menu" id="menu">
+            <li><a href="../index.html">Главная</a></li>
+            <li><a href="../slider/slaider.html">Слайдер</a></li>
+            <li><a href="../calc/calc.html">Калькулятор</a></li>
+            <li><a href="../form/form.html">Форма обратной связи</a></li>
+            <li><a href="../contacts/contacts.html">Контакты</a></li>
+           
+           
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+
+    <div class="popup" id="popup"></div>
+
+
+
+    <header class="header">
+      <div class="container">
+        <div class="content">
+          <h1>Форма обратной связи</h1>
+        </div>
+      </div>
+    </header>
+    
+
+
+    <main class="main">
+      <div class="container">
+        <div class="content">
+
+          <div class="form_wrap">
+            <div class="form_title" style="color: white;">Заполните форму: </div>
+            <form action="./css/form.php" class="form form-order" method="POST">
+              <div class="form__list">
+  
+                <fieldset class="form__item">
+                  <!-- <label for="" class="form__label">Ввудите имя</label> -->
+                  <input type="text" name="userName" placeholder="Введите имя*" required minlength="2" maxlength="30"
+                    class="form__inp">
+                </fieldset>
+  
+                <fieldset class="form__item">
+                  <!-- <label for="" class="form__label">Введите email</label> -->
+                  <input type="email" name="userMail" placeholder="Введите Емайл*" required class="form__inp">
+                </fieldset>
+  
+  
+                <fieldset class="form__item">
+                  <input type="tel" name="userPhone" placeholder="Введите 10 цифр телефона" required="" class="form__inp"
+                   
+                    minlength="10" maxlength="10"    > 
+  
+                    
+                </fieldset>
+  
+                <fieldset class="form__item">
+                  <input type="text" name="userTelegram" placeholder="Введите телеграм*" required class="form__inp">
+                </fieldset>
+
+                <fieldset class="form__item">
+                <button class="form__btn">Отправить</button>
+                </fieldset>
+              </div>
+            </form>
+          </div>
+  
+        </div>
+      </div>
+
+    </main>
+
+
+
+
+
+
+
+    <footer class="footer">
+      <div class="container">
+        <div class="content">
+          &copy; 2023 Struchina
+      </div>
+    </div>
+    </footer>
+
+
+
+    <script >
+      var hamb = document.querySelector('#hamb');
+var popup = document.querySelector('#popup');
+var menu = document.querySelector('#menu').cloneNode(1);
+var body = document.body;
+
+hamb.addEventListener('click',hambHandler);
+
+function hambHandler(e) {
+    e.preventDefault();
+    popup.classList.toggle('open');
+    hamb.classList.toggle('active');
+    body.classList.toggle('noscroll');
+    renderPopup();
+}
+
+function renderPopup() {
+    popup.appendChild(menu);
+}
+
+var links  = Array.from(menu.children);
+
+links.forEach((link) => {
+    link.addEventListener('click', closeOnClick);
+})
+
+function closeOnClick(){
+    popup.classList.remove('open');
+    hamb.classList.remove('active');
+    body.classList.remove('noscroll');
+}
+
+
+    </script>
+  </body>
+</html>

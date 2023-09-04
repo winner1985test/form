@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="assets/css/reset.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <title>Итоговая работа</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+
+
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar__wrap">
+        <div class="hamb">
+          <div class="hamb__field" id="hamb">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+        </div>
+        <a href="#" class="logo" id="logo">Стручина <br>Кира</a>
+        <ul class="menu" id="menu">
+          <li><a href="../Портфолио/index.html">Главная</a></li>
+          <li><a href="../Слайдер/slaider.html">Слайдер</a></li>
+          <li><a href="../Калькулятор/calc.html">Калькулятор</a></li>
+          <li><a href="../Форма/form.html">Форма обратной связи</a></li>
+          <li><a href="../Контакты/contacts.html">Контакты</a></li>
+          
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="popup" id="popup"></div>
+
+
+
+  <header class="header">
+    <div class="container">
+      <div class="content">
+        <h1>Портфолио</h1>
+      </div>
+    </div>
+  </header>
+
+
+
+  <main class="main">
+    <div class="container">
+      <div class="content">
+
+
+        <!--Home section-->
+        <section class="home-section active">
+          <h1 class="hero-heading">Привет!<br> я Кира, <br>junior <br>frontend developer! </h1>
+          
+
+
+          <img src="../img/111.jpg" class="home-img" alt="">
+        </section>
+        
+
+
+
+        <!--Project section-->
+        <section class="project-section">
+          
+          
+        </section>
+
+        <h1 class="project-heading">(HTML+ CSS+ JS+ Адаптивная верстка+ React+github+WordPress+SQL)</h1>
+        <div class="project-container">
+          <div class="project-card">
+            <img src="../img/777.jpg" class="project-img" alt="">
+
+            <div class="project-content">
+              <h1 class="project-title">Я в начале своего пути... <br> И мне это интересно...</h1>
+              <p>Ссылки на мои работы:<p>
+              <ul>
+                <li><a href="https://github.com/winner1985test/test-new">Адаптивная верстка "Путешествие по России"</a></li>
+                <li><a href="https://github.com/winner1985test/senergy_progect">Адаптивная верстка "Кусто"</a></li>
+                
+                <li><a href="#">Дипломная работа "Профессия веб-разработчик"</a></li>
+    
+    
+              </ul>
+              
+             
+       
+
+
+
+
+
+            </div>
+
+          </div>
+
+
+
+        </div>
+
+        
+
+
+
+
+      </div>
+    </div>
+
+  </main>
+
+
+
+
+
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="content">
+        &copy; 2023 Struchina
+      </div>
+    </div>
+
+  </footer>
+
+
+
+  <script>
+    var hamb = document.querySelector('#hamb');
+    var popup = document.querySelector('#popup');
+    var menu = document.querySelector('#menu').cloneNode(1);
+    var body = document.body;
+
+    hamb.addEventListener('click', hambHandler);
+
+    function hambHandler(e) {
+      e.preventDefault();
+      popup.classList.toggle('open');
+      hamb.classList.toggle('active');
+      body.classList.toggle('noscroll');
+      renderPopup();
+    }
+
+    function renderPopup() {
+      popup.appendChild(menu);
+    }
+
+    var links = Array.from(menu.children);
+
+    links.forEach((link) => {
+      link.addEventListener('click', closeOnClick);
+    })
+
+    function closeOnClick() {
+      popup.classList.remove('open');
+      hamb.classList.remove('active');
+      body.classList.remove('noscroll');
+    }
+
+
+  </script>
+</body>
+
+</html>
